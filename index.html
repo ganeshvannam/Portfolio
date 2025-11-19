@@ -8,33 +8,61 @@
     name="description"
     content="Portfolio of Ganesh Vannam – Data Analyst & Data Engineer specializing in SQL, Python, Power BI, Azure, ETL pipelines and data warehousing."
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.16);
-      --accent-strong: #6366f1;
-      --text: #f9fafb;
+      --bg: #020617;
+      --bg-alt: #020617;
+      --bg-elevated: #020617;
+      --border-subtle: rgba(148, 163, 184, 0.28);
+      --border-strong: rgba(148, 163, 184, 0.55);
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.16);
+      --accent-strong: #4f46e5;
+      --text: #e5e7eb;
+      --text-strong: #f9fafb;
       --muted: #9ca3af;
-      --border: #1f2937;
-      --card-bg: #0b1120;
-      --tag-bg: #111827;
-      --tag-text: #e5e7eb;
-      --danger: #f97373;
+      --muted-soft: rgba(148, 163, 184, 0.2);
+      --chip-bg: rgba(15, 23, 42, 0.9);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    [data-theme="light"] {
+      --bg: #f3f4f6;
+      --bg-alt: #e5e7eb;
+      --bg-elevated: #ffffff;
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --border-strong: rgba(55, 65, 81, 0.6);
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.1);
+      --accent-strong: #4338ca;
+      --text: #374151;
+      --text-strong: #111827;
+      --muted: #6b7280;
+      --muted-soft: rgba(156, 163, 175, 0.18);
+      --chip-bg: #f9fafb;
+      --shadow-soft: 0 16px 30px rgba(15, 23, 42, 0.15);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html,
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(30, 64, 175, 0.32), transparent 50%),
+        radial-gradient(circle at bottom, rgba(8, 47, 73, 0.5), transparent 55%),
+        var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
     }
@@ -48,147 +76,268 @@
       text-decoration: none;
     }
 
-    .wrapper {
-      max-width: 1120px;
+    .app {
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 1.25rem 1rem 3rem;
+      padding: 1.5rem 1.25rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.65fr);
+      gap: 1.75rem;
     }
 
-    /* NAVBAR */
-    .nav {
+    /* SIDEBAR */
+    .sidebar {
       position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
+      top: 1.25rem;
+      align-self: flex-start;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-subtle);
       background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.98),
-        rgba(15, 23, 42, 0.7),
-        transparent
-      );
-      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
-      margin-bottom: 1.5rem;
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.6rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
+          145deg,
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.85)
+        ),
+        var(--bg-alt);
+      box-shadow: var(--shadow-soft);
+      padding: 1.35rem 1.4rem 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: 0.1rem;
+      gap: 1.1rem;
     }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
+    [data-theme="light"] .sidebar {
+      background: linear-gradient(145deg, #f9fafb, #e5e7eb);
     }
 
-    .brand-tagline {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
+    .sidebar-header {
       display: flex;
-      gap: 1rem;
-      font-size: 0.85rem;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      background: radial-gradient(circle at 30% 20%, #f97316, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--text-strong);
+    }
+
+    .sidebar-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .sidebar-title h1 {
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-strong);
+    }
+
+    .sidebar-title span {
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .nav-links a {
-      padding: 0.25rem 0.5rem;
+    .sidebar-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .nav-chip {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
+      cursor: pointer;
+      color: var(--muted);
       transition: all 0.15s ease-out;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(148, 163, 184, 0.14);
+    .nav-chip:hover,
+    .nav-chip.active {
+      border-color: var(--accent);
+      color: var(--text-strong);
+      background: var(--accent-soft);
     }
 
-    .nav-cta {
-      display: flex;
-      gap: 0.5rem;
+    .sidebar-footer {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0.6rem;
       align-items: center;
     }
 
-    .button,
-    .button-outline {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.85rem;
+    .sidebar-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .sidebar-meta strong {
+      display: block;
+      color: var(--text-strong);
+    }
+
+    .btn-primary,
+    .btn-ghost {
       border-radius: 999px;
+      font-size: 0.78rem;
+      padding: 0.45rem 0.8rem;
       border: 1px solid transparent;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.3rem;
+      gap: 0.35rem;
+      cursor: pointer;
       white-space: nowrap;
       transition: all 0.16s ease-out;
     }
 
-    .button {
+    .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #e5e7eb;
-      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.4);
+      color: #f9fafb;
+      box-shadow: 0 10px 22px rgba(79, 70, 229, 0.55);
     }
 
-    .button:hover {
+    .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(79, 70, 229, 0.55);
+      box-shadow: 0 14px 30px rgba(79, 70, 229, 0.7);
     }
 
-    .button-outline {
-      background: transparent;
-      border-color: rgba(148, 163, 184, 0.5);
+    .btn-ghost {
+      background: var(--chip-bg);
+      border-color: var(--border-subtle);
       color: var(--muted);
     }
 
-    .button-outline:hover {
+    .btn-ghost:hover {
       border-color: var(--accent);
-      color: var(--text);
-      background: rgba(79, 70, 229, 0.08);
+      color: var(--text-strong);
     }
 
-    .nav-toggle {
-      display: none;
-      border: none;
-      background: transparent;
+    .sidebar-links {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.95rem;
       color: var(--muted);
-      font-size: 1.3rem;
-      cursor: pointer;
     }
 
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
-      gap: 2.5rem;
+    .sidebar-links a {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 2.5rem;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
+      transition: all 0.16s;
     }
 
-    .hero-eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+    .sidebar-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
       color: var(--muted);
-      margin-bottom: 0.6rem;
+      background: var(--chip-bg);
+      cursor: pointer;
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .theme-toggle span {
+      font-size: 0.9rem;
+    }
+
+    /* MAIN */
+    .main {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: radial-gradient(
+          circle at top,
+          rgba(37, 99, 235, 0.15),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(8, 47, 73, 0.75),
+          transparent 60%
+        ),
+        rgba(15, 23, 42, 0.96);
+      padding: 1.35rem 1.4rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .main {
+      background: linear-gradient(145deg, #ffffff, #e5e7eb);
+    }
+
+    section {
+      margin-bottom: 1.8rem;
+      scroll-margin-top: 80px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-strong);
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* HERO / ABOUT */
+    .hero-intro {
+      margin-bottom: 1.1rem;
     }
 
     .hero-title {
-      font-size: 2.2rem;
-      line-height: 1.1;
+      font-size: 1.55rem;
+      line-height: 1.22;
       margin-bottom: 0.5rem;
     }
 
@@ -199,817 +348,1030 @@
       color: transparent;
     }
 
-    .hero-subtitle {
+    .hero-body {
+      font-size: 0.86rem;
       color: var(--muted);
-      font-size: 0.9rem;
-      max-width: 32rem;
-      margin-bottom: 1rem;
+      max-width: 38rem;
+      line-height: 1.5;
     }
 
-    .hero-meta {
+    .hero-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.3rem;
+      gap: 0.45rem;
+      margin: 0.9rem 0 0.5rem;
     }
 
     .pill {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
+      font-size: 0.72rem;
+      padding: 0.28rem 0.65rem;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
       color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
     }
 
     .pill strong {
-      color: #e5e7eb;
+      color: var(--text-strong);
       font-weight: 600;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.25rem;
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.1rem;
     }
 
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      font-size: 0.8rem;
-      color: var(--muted);
+    .timeline-item {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.8rem;
     }
 
-    .hero-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
+    .timeline-line {
+      position: absolute;
+      left: 5px;
+      top: 0.35rem;
+      bottom: -0.4rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.5;
     }
 
-    .hero-links span {
-      font-size: 0.7rem;
-      opacity: 0.6;
-    }
-
-    .hero-card {
-      border-radius: 1.2rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(
-          circle at top left,
-          rgba(79, 70, 229, 0.12),
-          transparent
-        ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(14, 165, 233, 0.16),
-          transparent
-        ),
-        var(--bg-alt);
-      padding: 1.1rem 1.2rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .hero-chip {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 2px solid var(--accent);
+      background: var(--bg);
+    }
+
+    .timeline-role {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-strong);
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
-    .hero-card-metric {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.1rem;
+    .edu-card {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 0.7rem 0.8rem;
+      font-size: 0.78rem;
     }
 
-    .hero-card-sub {
-      font-size: 0.75rem;
+    [data-theme="light"] .edu-card {
+      background: rgba(249, 250, 251, 0.96);
+    }
+
+    .edu-card-title {
+      font-weight: 600;
+      color: var(--text-strong);
+    }
+
+    .edu-meta {
       color: var(--muted);
       margin-bottom: 0.3rem;
     }
 
-    .hero-progress {
-      width: 100%;
-      height: 0.5rem;
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .hero-progress-fill {
-      height: 100%;
-      width: 78%;
-      background: linear-gradient(90deg, #22c55e, #a3e635, #eab308);
-    }
-
-    .hero-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+    .edu-coursework {
+      color: var(--muted);
       margin-top: 0.3rem;
     }
 
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.18rem 0.5rem;
-      border-radius: 999px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      white-space: nowrap;
+    .edu-coursework span {
+      font-size: 0.72rem;
     }
 
-    /* SECTIONS */
-    section {
-      margin-bottom: 2.3rem;
-    }
-
-    .section-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .section-title span {
-      color: #e5e7eb;
-    }
-
-    /* EXPERIENCE */
-    .experience-grid {
+    /* EXPERIENCE CARDS */
+    .exp-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
-      gap: 1.2rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.9rem;
     }
 
-    .card {
-      border-radius: 1rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: radial-gradient(
-          circle at top left,
-          rgba(79, 70, 229, 0.08),
-          transparent
-        ),
-        var(--card-bg);
-      padding: 0.9rem 1rem;
+    .exp-card {
+      border-radius: 0.95rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.94);
+      padding: 0.8rem 0.85rem;
+      font-size: 0.78rem;
     }
 
-    .card-header {
+    [data-theme="light"] .exp-card {
+      background: rgba(249, 250, 251, 0.96);
+    }
+
+    .exp-header {
       display: flex;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 0.6rem;
       margin-bottom: 0.35rem;
     }
 
-    .card-title {
-      font-size: 0.95rem;
+    .exp-role {
       font-weight: 600;
+      color: var(--text-strong);
     }
 
-    .card-subtitle {
-      font-size: 0.8rem;
+    .exp-company {
       color: var(--muted);
     }
 
-    .card-meta {
-      font-size: 0.75rem;
+    .exp-dates {
+      font-size: 0.72rem;
       color: var(--muted);
-      margin-bottom: 0.4rem;
+      white-space: nowrap;
     }
 
-    .card ul {
+    .exp-list {
       list-style: none;
-      font-size: 0.78rem;
-      color: #e5e7eb;
+      margin-top: 0.1rem;
     }
 
-    .card ul li {
-      margin-bottom: 0.28rem;
+    .exp-list li {
       position: relative;
-      padding-left: 0.9rem;
+      padding-left: 0.75rem;
+      margin-bottom: 0.25rem;
     }
 
-    .card ul li::before {
+    .exp-list li::before {
       content: "•";
       position: absolute;
       left: 0;
       top: 0;
-      color: var(--accent-strong);
+      color: var(--accent);
+      font-size: 0.7rem;
     }
 
-    .skills-inline {
+    .exp-skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.25rem;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
     }
 
-    .skills-inline span {
-      font-size: 0.68rem;
-      padding: 0.16rem 0.45rem;
+    .exp-skills span {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.5rem;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid var(--border-subtle);
       color: var(--muted);
     }
 
     /* PROJECTS */
-    .projects-header {
+    .projects-toolbar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 0.75rem;
-      margin-bottom: 0.7rem;
+      align-items: center;
+      margin-bottom: 0.8rem;
     }
 
-    .project-filters {
+    .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.75rem;
+      gap: 0.35rem;
     }
 
-    .filter-chip {
+    .filter-btn {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 0.2rem 0.65rem;
+      border: 1px solid var(--border-subtle);
       background: transparent;
       color: var(--muted);
       cursor: pointer;
       transition: all 0.16s ease-out;
     }
 
-    .filter-chip.active,
-    .filter-chip:hover {
-      color: #e5e7eb;
+    .filter-btn.active,
+    .filter-btn:hover {
       border-color: var(--accent);
+      color: var(--text-strong);
       background: var(--accent-soft);
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
-      gap: 1.2rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.9rem;
     }
 
     .project-card {
-      border-radius: 1rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: radial-gradient(
-          circle at top right,
-          rgba(56, 189, 248, 0.08),
-          transparent
-        ),
-        var(--card-bg);
-      padding: 0.9rem 1rem;
+      border-radius: 0.95rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.93);
+      padding: 0.8rem 0.85rem;
+      font-size: 0.78rem;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
+    }
+
+    [data-theme="light"] .project-card {
+      background: rgba(249, 250, 251, 0.98);
     }
 
     .project-title-row {
       display: flex;
       justify-content: space-between;
       gap: 0.5rem;
-      align-items: center;
+      align-items: baseline;
     }
 
     .project-title {
-      font-size: 0.9rem;
+      font-size: 0.87rem;
       font-weight: 600;
+      color: var(--text-strong);
     }
 
-    .project-type {
-      font-size: 0.68rem;
-      padding: 0.18rem 0.5rem;
+    .project-chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
       color: var(--muted);
       white-space: nowrap;
     }
 
     .project-meta {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--muted);
     }
 
     .project-desc {
-      font-size: 0.78rem;
-      color: #e5e7eb;
+      color: var(--muted);
     }
 
     .project-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 0.3rem;
       gap: 0.4rem;
-      margin-top: 0.4rem;
       flex-wrap: wrap;
     }
 
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .project-tags span {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border-subtle);
+      color: var(--muted);
+    }
+
+    [data-theme="light"] .project-tags span {
+      background: rgba(243, 244, 246, 0.98);
+    }
+
     .project-link {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: #a5b4fc;
       display: inline-flex;
       align-items: center;
       gap: 0.2rem;
+      white-space: nowrap;
     }
 
-    .project-link span {
-      font-size: 0.9rem;
-    }
-
-    /* SKILLS SECTION */
+    /* SKILLS */
     .skills-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 1.2rem;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 0.9rem;
     }
 
-    .skills-group-title {
-      font-size: 0.8rem;
+    .skills-card {
+      border-radius: 0.95rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.94);
+      padding: 0.75rem 0.8rem;
+      font-size: 0.78rem;
+    }
+
+    [data-theme="light"] .skills-card {
+      background: rgba(249, 250, 251, 0.98);
+    }
+
+    .skills-label {
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.12em;
       color: var(--muted);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
-    .skills-list {
+    .pill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
     }
 
-    .skills-list span {
-      font-size: 0.73rem;
-      padding: 0.18rem 0.55rem;
+    .pill-list span {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 999px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      white-space: nowrap;
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
+      color: var(--muted);
+    }
+
+    .skill-meter {
+      margin-top: 0.35rem;
+    }
+
+    .skill-meter-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 0.42rem;
+      border-radius: 999px;
+      background: var(--muted-soft);
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #84cc16, #eab308);
+      transform-origin: left;
+      transform: scaleX(0.9);
     }
 
     /* CONTACT */
-    .contact {
-      margin-top: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 0.9rem;
       font-size: 0.78rem;
       color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.7rem;
     }
 
-    .contact a {
+    .contact-card {
+      border-radius: 0.95rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.94);
+      padding: 0.75rem 0.8rem;
+    }
+
+    [data-theme="light"] .contact-card {
+      background: rgba(249, 250, 251, 0.98);
+    }
+
+    .contact-item {
+      margin-bottom: 0.22rem;
+    }
+
+    .contact-item strong {
+      color: var(--text-strong);
+    }
+
+    .contact-item a {
       color: #a5b4fc;
     }
 
+    .contact-note {
+      margin-top: 0.35rem;
+      font-size: 0.75rem;
+    }
+
+    .contact-mini {
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .contact-mini a {
+      color: #a5b4fc;
+    }
+
+    footer {
+      margin-top: 1rem;
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* RESPONSIVE */
-    @media (max-width: 840px) {
-      .hero {
+    @media (max-width: 900px) {
+      .app {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .experience-grid,
+      .sidebar {
+        position: static;
+        order: -1;
+      }
+
+      .timeline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .projects-grid,
-      .skills-grid {
+      .skills-grid,
+      .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+    }
 
-      .nav-links,
-      .nav-cta {
-        display: none;
+    @media (max-width: 640px) {
+      .app {
+        padding: 1rem 0.9rem 2.5rem;
       }
 
-      .nav-toggle {
-        display: block;
-      }
-
-      .nav-open .nav-links,
-      .nav-open .nav-cta {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        width: 100%;
-      }
-
-      .nav-inner {
-        flex-wrap: wrap;
-        align-items: flex-start;
+      .main {
+        padding: 1.1rem 1rem 1.4rem;
       }
 
       .hero-title {
-        font-size: 1.8rem;
+        font-size: 1.35rem;
+      }
+
+      .sidebar-footer {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="nav-inner" id="navInner">
-      <div class="brand">
-        <div class="brand-name">GANESH VANNAM</div>
-        <div class="brand-tagline">Data Analyst & Data Engineer</div>
+  <div class="app" id="appRoot">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="avatar">G</div>
+        <div class="sidebar-title">
+          <h1>Ganesh Vannam</h1>
+          <span>Data Analyst · Data Engineer</span>
+        </div>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        ☰
-      </button>
-      <nav class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-      </nav>
-      <div class="nav-cta" id="navCta">
-        <a href="mailto:gvannam@mtu.edu" class="button-outline">Email</a>
-        <a href="#contact" class="button">View Resume</a>
+
+      <p class="sidebar-tagline">
+        I build analytics-ready data pipelines and decision-friendly dashboards
+        using SQL, Python, Power BI, and Azure.
+      </p>
+
+      <div class="sidebar-nav">
+        <button class="nav-chip active" data-target="about">About</button>
+        <button class="nav-chip" data-target="experience">Experience</button>
+        <button class="nav-chip" data-target="projects">Projects</button>
+        <button class="nav-chip" data-target="skills">Skills</button>
+        <button class="nav-chip" data-target="contact">Contact</button>
       </div>
-    </div>
-  </header>
 
-  <main class="wrapper">
-    <!-- HERO -->
-    <section class="hero" id="about">
-      <div>
-        <div class="hero-eyebrow">MS Data Science · Michigan Tech</div>
-        <h1 class="hero-title">
-          Data Analyst &amp; Data Engineer<br />
-          turning data into <span>decision-ready products</span>.
-        </h1>
-        <p class="hero-subtitle">
-          I design SQL &amp; Python-based pipelines, build Azure-backed
-          data models, and deliver Power BI dashboards that help teams move
-          from “what happened?” to “what should we do next?” across finance,
-          supply chain, and healthcare.
-        </p>
+      <div class="sidebar-footer">
+        <div class="sidebar-meta">
+          <strong>MS Data Science</strong>
+          Michigan Technological University · Grad Dec 2025
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;align-items:flex-end;">
+          <a href="mailto:gvannam@mtu.edu" class="btn-primary">
+            <span>Get in touch</span> <span>↗</span>
+          </a>
+          <button class="btn-ghost theme-toggle" id="themeToggle">
+            <span>🌓</span> Theme
+          </button>
+        </div>
+      </div>
 
-        <div class="hero-meta">
+      <div class="sidebar-links">
+        <a href="mailto:gvannam@mtu.edu" title="Email">✉️</a>
+        <a
+          href="https://www.linkedin.com/in/ganesh-vannam-8681642a8/"
+          target="_blank"
+          title="LinkedIn"
+          >in</a
+        >
+        <a
+          href="https://github.com/ganeshvannam"
+          target="_blank"
+          title="GitHub"
+          >{"</>"}</a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- About / Hero -->
+      <section id="about" class="reveal">
+        <div class="section-label">Overview</div>
+        <div class="hero-intro">
+          <h2 class="hero-title">
+            Helping teams move from raw data to
+            <span>reliable, decision-ready insights.</span>
+          </h2>
+          <p class="hero-body">
+            I’m a data professional with experience as a Data Analyst and Data
+            Engineering Intern at Cognizant, currently finishing my M.S. in
+            Data Science at Michigan Tech. I enjoy working close to the data:
+            designing ETL pipelines, modeling warehouse tables, and building
+            Power BI dashboards that answer real business questions in finance,
+            supply chain, and healthcare.
+          </p>
+        </div>
+        <div class="hero-pills">
           <div class="pill"><strong>2+ years</strong> industry experience</div>
           <div class="pill">
-            <strong>Graduating</strong> Dec 2025 · M.S. Data Science
+            <strong>Stack:</strong> SQL · Python · Power BI · Azure
           </div>
-          <div class="pill"><strong>Focus:</strong> Analytics &amp; Data Engineering</div>
+          <div class="pill">
+            <strong>Focus:</strong> Analytics &amp; Data Engineering
+          </div>
         </div>
 
-        <div class="hero-actions">
-          <a href="#projects" class="button">View featured projects</a>
-          <a
-            href="https://www.linkedin.com/in/ganesh-vannam-8681642a8/"
-            target="_blank"
-            class="button-outline"
-            >Open LinkedIn</a
-          >
-        </div>
-
-        <div class="hero-links">
-          <a
-            href="mailto:gvannam@mtu.edu"
-            title="Email"
-          >
-            ✉️ <span>gvannam@mtu.edu</span>
-          </a>
-          <a
-            href="https://github.com/ganeshvannam"
-            target="_blank"
-            title="GitHub"
-          >
-            💻 <span>github.com/ganeshvannam</span>
-          </a>
-          <a href="#experience">📊 Data Analyst &amp; DE Intern @ Cognizant</a>
-        </div>
-      </div>
-
-      <aside class="hero-card">
-        <div class="hero-card-header">
+        <div class="timeline" style="margin-top:0.9rem;">
           <div>
-            <div class="hero-card-title">Snapshot</div>
-            <div class="card-subtitle" style="font-size: 0.75rem; color: var(--muted);">
-              Tech stack &amp; outcomes
-            </div>
-          </div>
-          <div class="hero-chip">Actively seeking 2025 roles</div>
-        </div>
+            <div class="section-label" style="margin-bottom:0.3rem;">Timeline</div>
 
-        <div>
-          <div class="hero-card-metric">SQL · Python · Power BI</div>
-          <div class="hero-card-sub">
-            Built ETL pipelines, dashboards, and KPIs supporting business &amp; ops.
-          </div>
-          <div class="hero-progress">
-            <div class="hero-progress-fill"></div>
-          </div>
-        </div>
+            <article class="timeline-item">
+              <div class="timeline-line"></div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-role">Data Analyst</div>
+              <div class="timeline-meta">
+                Cognizant Technology Solutions · Jun 2022 – Nov 2023 · Chennai, India
+              </div>
+              <p class="timeline-desc">
+                Built Azure-backed pipelines and reports for business, operations,
+                and finance teams, owning SQL datasets and Power BI dashboards.
+              </p>
+            </article>
 
-        <div class="hero-card-tags">
-          <span class="tag">Azure Data Factory</span>
-          <span class="tag">Azure SQL</span>
-          <span class="tag">Data Warehousing</span>
-          <span class="tag">ETL / ELT</span>
-          <span class="tag">Snowflake</span>
-          <span class="tag">KPI Dashboards</span>
-          <span class="tag">EDA</span>
-        </div>
-      </aside>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2 class="section-title"><span>Experience</span></h2>
-
-      <div class="experience-grid">
-        <!-- Data Analyst -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Data Analyst</div>
-              <div class="card-subtitle">Cognizant Technology Solutions · Chennai, India</div>
-            </div>
-            <div class="card-meta">Jun 2022 – Nov 2023</div>
+            <article class="timeline-item">
+              <div class="timeline-line"></div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-role">Data Engineering Intern</div>
+              <div class="timeline-meta">
+                Cognizant Technology Solutions · Jan 2022 – Jun 2022
+              </div>
+              <p class="timeline-desc">
+                Supported Azure Data Factory pipelines, data warehouse schemas,
+                and monitoring for analytics workloads.
+              </p>
+            </article>
           </div>
-          <div class="card-meta">
-            Worked with business, operations, and finance teams to design
-            SQL-backed datasets and Power BI dashboards on Azure.
-          </div>
-          <ul>
-            <li>
-              Collaborated with stakeholders via Jira &amp; Confluence to gather
-              reporting requirements and translate them into SQL datasets and
-              Power BI dashboards, reducing clarification cycles on report requests.
-            </li>
-            <li>
-              Built and maintained ETL workflows in Python and SQL to load and
-              transform large transactional data into Azure SQL / SQL Server tables,
-              improving data freshness and cutting manual data preparation time by
-              30–40%.
-            </li>
-            <li>
-              Designed KPI dashboards and Excel reports to monitor revenue,
-              utilization, and SLA adherence, helping managers identify
-              underperforming regions and optimize resource allocation.
-            </li>
-            <li>
-              Optimized complex SQL queries (joins, CTEs, window functions,
-              indexing), reducing report refresh and ad-hoc query runtimes by up to
-              35%.
-            </li>
-            <li>
-              Implemented routine data-quality checks (record counts, null/duplicate
-              checks, reconciliation vs source systems) and documented logic in
-              Confluence, increasing trust in dashboards and reducing rework.
-            </li>
-          </ul>
-          <div class="skills-inline">
-            <span>SQL</span><span>Python</span><span>Power BI</span
-            ><span>Azure SQL</span><span>ETL</span><span>EDA</span
-            ><span>Jira</span><span>Confluence</span>
-          </div>
-        </article>
 
-        <!-- Data Engineering Intern -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Data Engineering Intern</div>
-              <div class="card-subtitle">
-                Cognizant Technology Solutions · Chennai, India
+          <div>
+            <div class="section-label" style="margin-bottom:0.3rem;">Education</div>
+            <div class="edu-card">
+              <div class="edu-card-title">
+                M.S. in Data Science · GPA 3.72 / 4.0
+              </div>
+              <div class="edu-meta">
+                Michigan Technological University · Jan 2024 – Dec 2025
+              </div>
+              <div class="edu-coursework">
+                <span>
+                  Coursework: Data Mining, Predictive Modeling, Business
+                  Intelligence &amp; Analytics, Big Data Analytics, Machine
+                  Learning, AI in Healthcare, Information Governance &amp; Risk
+                  Management, Statistical Methods.
+                </span>
               </div>
             </div>
-            <div class="card-meta">Jan 2022 – Jun 2022</div>
-          </div>
-          <div class="card-meta">
-            Supported Azure-based pipelines and warehouse schemas for analytics
-            teams.
-          </div>
-          <ul>
-            <li>
-              Assisted in building ETL pipelines with SQL, Python, and Azure Data
-              Factory to move data from on-prem Oracle/SQL Server into centralized
-              Azure SQL tables for analytics and BI.
-            </li>
-            <li>
-              Helped design and refine warehouse-style schemas (fact and dimension
-              tables) to support Power BI and Excel-based analytics, making joins and
-              exploration easier for analysts.
-            </li>
-            <li>
-              Improved ETL performance by tuning SQL queries and restructuring
-              transformations (indexes, reduced scans), cutting batch runtimes and
-              dashboard refresh delays.
-            </li>
-            <li>
-              Supported pipeline monitoring and documentation using ADF monitor,
-              logs, Jira, and Confluence, adding basic alerts and data flow diagrams
-              to speed up issue detection and resolution.
-            </li>
-          </ul>
-          <div class="skills-inline">
-            <span>Azure Data Factory</span><span>Azure SQL</span><span>SQL</span
-            ><span>Python</span><span>Data Warehousing</span
-            ><span>Data Modeling</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="projects-header">
-        <h2 class="section-title"><span>Featured Projects</span></h2>
-        <div class="project-filters">
-          <button class="filter-chip active" data-filter="all">All</button>
-          <button class="filter-chip" data-filter="analytics">Analytics</button>
-          <button class="filter-chip" data-filter="engineering">Data Eng</button>
-          <button class="filter-chip" data-filter="ml">ML / AI</button>
-        </div>
-      </div>
-
-      <div class="projects-grid" id="projectsGrid">
-        <!-- Inventory Optimization -->
-        <article class="project-card" data-tags="analytics engineering">
-          <div class="project-title-row">
-            <h3 class="project-title">
-              Supply Chain Inventory Optimization Dashboard
-            </h3>
-            <div class="project-type">Power BI · SQL · Python</div>
-          </div>
-          <p class="project-meta">May 2025 – Aug 2025 · Supply Chain Analytics</p>
-          <p class="project-desc">
-            Analyzed 200+ SKUs across 4 warehouse regions using simulated supply
-            chain data to compute EOQ, Reorder Point, and Safety Stock with SQL and
-            Python. Built an interactive Power BI dashboard to track coverage,
-            supplier lead times, stockout risk, and reorder alerts, reducing
-            simulated overstock by 20% and improving visibility for planners.
-          </p>
-          <div class="project-footer">
-            <div class="hero-card-tags">
-              <span class="tag">Power BI</span>
-              <span class="tag">SQL</span>
-              <span class="tag">Python</span>
-              <span class="tag">Inventory Analytics</span>
-            </div>
-            <!-- Optional: add GitHub/Live links later -->
-          </div>
-        </article>
-
-        <!-- Financial Health Scorecard -->
-        <article class="project-card" data-tags="analytics engineering">
-          <div class="project-title-row">
-            <h3 class="project-title">Financial Health Scorecard Dashboard</h3>
-            <div class="project-type">Azure SQL · Power BI</div>
-          </div>
-          <p class="project-meta">Jan 2025 – May 2025 · Retail Finance</p>
-          <p class="project-desc">
-            Built a financial scorecard in Power BI backed by Azure SQL to track
-            KPIs (revenue, cost, compliance) across 600+ retail stores. Implemented
-            ETL pipelines with advanced SQL (CTEs, window functions) for account
-            rollups and validation rules, while indexing and schema normalization
-            improved refresh speed and reporting accuracy.
-          </p>
-          <div class="project-footer">
-            <div class="hero-card-tags">
-              <span class="tag">Power BI</span>
-              <span class="tag">Azure SQL</span>
-              <span class="tag">ETL</span>
-              <span class="tag">KPI Design</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Heart Failure ML (optional ML project) -->
-        <article class="project-card" data-tags="ml analytics">
-          <div class="project-title-row">
-            <h3 class="project-title">
-              Heart Failure Risk Prediction Post–Myocardial Infarction
-            </h3>
-            <div class="project-type">ML · R / Python</div>
-          </div>
-          <p class="project-meta">Aug 2024 – Dec 2024 · Healthcare Analytics</p>
-          <p class="project-desc">
-            Developed predictive models for chronic heart failure risk using a
-            clinical dataset. Applied KNN imputation, outlier treatment, and
-            normalization (Box–Cox, Spatial Sign), engineered features, and trained
-            models (Logistic Regression, Neural Networks, SVM, KNN) with stratified
-            cross-validation to handle class imbalance, enabling earlier risk
-            stratification in a simulated workflow.
-          </p>
-          <div class="project-footer">
-            <div class="hero-card-tags">
-              <span class="tag">Machine Learning</span>
-              <span class="tag">R / Python</span>
-              <span class="tag">Healthcare</span>
-              <span class="tag">EDA</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <h2 class="section-title"><span>Skills</span></h2>
-      <div class="skills-grid">
-        <div class="card">
-          <div class="skills-group-title">Data &amp; Analytics</div>
-          <div class="skills-list">
-            <span>SQL</span>
-            <span>Python</span>
-            <span>R</span>
-            <span>Power BI</span>
-            <span>Excel</span>
-            <span>EDA</span>
-            <span>Data Visualization</span>
-            <span>KPI Design</span>
-            <span>Statistical Analysis</span>
           </div>
         </div>
-        <div class="card">
-          <div class="skills-group-title">Data Engineering &amp; Cloud</div>
-          <div class="skills-list">
-            <span>ETL / ELT</span>
-            <span>Azure Data Factory</span>
-            <span>Azure SQL Database</span>
-            <span>Data Warehousing</span>
-            <span>Data Modeling (Star/Snowflake)</span>
-            <span>Snowflake</span>
-            <span>Apache Spark</span>
-            <span>Git</span>
-            <span>Jira</span>
-            <span>Confluence</span>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="reveal">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Experience</div>
+            <h2 class="section-title">Hands-on industry work</h2>
+          </div>
+          <p class="section-subtitle">
+            Analytics &amp; data engineering work delivering pipelines, KPIs,
+            and dashboards.
+          </p>
+        </div>
+
+        <div class="exp-grid">
+          <article class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Data Analyst</div>
+                <div class="exp-company">
+                  Cognizant Technology Solutions · Chennai, India
+                </div>
+              </div>
+              <div class="exp-dates">Jun 2022 – Nov 2023</div>
+            </div>
+            <ul class="exp-list">
+              <li>
+                Partnered with business, operations, and finance stakeholders via
+                Jira &amp; Confluence to translate reporting needs into SQL
+                datasets and Power BI dashboards.
+              </li>
+              <li>
+                Developed and maintained ETL workflows in Python and SQL to load
+                and transform large transactional data into Azure SQL / SQL
+                Server tables, reducing manual data preparation time by 30–40%.
+              </li>
+              <li>
+                Designed KPI dashboards and Excel scorecards tracking revenue,
+                utilization, and SLA adherence, helping managers quickly spot
+                underperforming regions.
+              </li>
+              <li>
+                Optimized complex SQL (joins, CTEs, window functions, indexing),
+                cutting dashboard refresh and ad-hoc query runtimes by up to 35%.
+              </li>
+              <li>
+                Implemented record-count, null/duplicate, and reconciliation
+                checks, documenting logic in Confluence to increase trust in
+                numbers and reduce rework.
+              </li>
+            </ul>
+            <div class="exp-skills">
+              <span>SQL</span><span>Python</span><span>Power BI</span
+              ><span>Azure SQL</span><span>ETL</span><span>EDA</span
+              ><span>Excel</span><span>Jira</span><span>Confluence</span>
+            </div>
+          </article>
+
+          <article class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Data Engineering Intern</div>
+                <div class="exp-company">
+                  Cognizant Technology Solutions · Chennai, India
+                </div>
+              </div>
+              <div class="exp-dates">Jan 2022 – Jun 2022</div>
+            </div>
+            <ul class="exp-list">
+              <li>
+                Assisted in building ETL pipelines with SQL, Python, and Azure
+                Data Factory to move data from on-prem Oracle/SQL Server into
+                centralized Azure SQL tables used by analytics teams.
+              </li>
+              <li>
+                Helped design warehouse-style schemas (fact &amp; dimension tables)
+                to support Power BI and Excel analytics and simplify cross-domain
+                joins.
+              </li>
+              <li>
+                Tuned SQL queries and transformation steps (indexes, reduced
+                scans) to cut batch runtimes and dashboard refresh delays.
+              </li>
+              <li>
+                Contributed to pipeline monitoring and documentation using ADF
+                monitor, logs, Jira, and Confluence, adding basic alerts and data
+                flow diagrams to speed up troubleshooting.
+              </li>
+            </ul>
+            <div class="exp-skills">
+              <span>Azure Data Factory</span><span>Azure SQL</span><span>SQL</span
+              ><span>Python</span><span>Data Warehousing</span
+              ><span>Data Modeling</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="reveal">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Projects</div>
+            <h2 class="section-title">Selected work</h2>
+          </div>
+          <p class="section-subtitle">
+            Realistic, end-to-end projects in supply chain, retail finance, and healthcare.
+          </p>
+        </div>
+
+        <div class="projects-toolbar">
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="analytics">Analytics</button>
+            <button class="filter-btn" data-filter="engineering">Data Eng</button>
+            <button class="filter-btn" data-filter="ml">ML / Healthcare</button>
+          </div>
+          <div class="section-subtitle">
+            Filter to see what matches your team’s stack.
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CONTACT / FOOTER -->
-    <section id="contact" class="contact">
-      <div>
-        <strong>Contact</strong><br />
-        Email:
-        <a href="mailto:gvannam@mtu.edu">gvannam@mtu.edu</a> · Based in Houghton,
-        MI · Open to Data Analyst / Data Engineer roles (US).
-      </div>
-      <div>
-        <strong>Resume &amp; Links</strong><br />
-        LinkedIn:
-        <a href="https://www.linkedin.com/in/ganesh-vannam-8681642a8/" target="_blank"
-          >linkedin.com/in/ganesh-vannam-8681642a8/</a
-        ><br />
-        GitHub:
-        <a href="https://github.com/ganeshvannam" target="_blank"
-          >github.com/ganeshvannam</a
-        ><br />
-        (You can link your latest PDF resume here once hosted.)
-      </div>
-    </section>
-  </main>
+        <div class="projects-grid" id="projectsGrid">
+          <article
+            class="project-card"
+            data-tags="analytics engineering supply-chain"
+          >
+            <div class="project-title-row">
+              <h3 class="project-title">
+                Supply Chain Inventory Optimization Dashboard
+              </h3>
+              <div class="project-chip">Power BI · SQL · Python</div>
+            </div>
+            <div class="project-meta">
+              May 2025 – Aug 2025 · Supply chain analytics for 4 regions, 200+ SKUs
+            </div>
+            <p class="project-desc">
+              Modeled EOQ, Reorder Point, and Safety Stock metrics using SQL and
+              Python on simulated supply chain data. Built an interactive Power BI
+              dashboard to track coverage, supplier lead times, stockout risk, and
+              reorder alerts—reducing simulated overstock by 20% and improving
+              warehouse visibility.
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>Inventory Analytics</span><span>Power BI</span
+                ><span>SQL</span><span>Python</span>
+              </div>
+              <!-- Placeholder link -->
+              <div class="project-link">GitHub link (coming soon)</div>
+            </div>
+          </article>
+
+          <article
+            class="project-card"
+            data-tags="analytics engineering finance"
+          >
+            <div class="project-title-row">
+              <h3 class="project-title">Financial Health Scorecard Dashboard</h3>
+              <div class="project-chip">Azure SQL · Power BI</div>
+            </div>
+            <div class="project-meta">
+              Jan 2025 – May 2025 · 600+ retail stores · revenue &amp; compliance
+            </div>
+            <p class="project-desc">
+              Built a financial scorecard to monitor revenue, cost, and compliance
+              across 600+ stores. Implemented ETL pipelines in SQL using CTEs and
+              window functions to handle account rollups and business rules; indexed
+              key tables and normalized schemas to improve refresh speed and
+              reporting reliability.
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>Azure SQL</span><span>Power BI</span><span>ETL</span
+                ><span>KPI Design</span>
+              </div>
+              <div class="project-link">GitHub link (coming soon)</div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="ml analytics healthcare">
+            <div class="project-title-row">
+              <h3 class="project-title">
+                Heart Failure Risk Prediction Post–Myocardial Infarction
+              </h3>
+              <div class="project-chip">ML · R / Python</div>
+            </div>
+            <div class="project-meta">
+              Aug 2024 – Dec 2024 · Healthcare analytics &amp; risk stratification
+            </div>
+            <p class="project-desc">
+              Built models to predict chronic heart failure risk using a clinical
+              dataset. Applied KNN imputation, outlier mitigation, and normalization
+              (Box–Cox, Spatial Sign), engineered features, and trained models
+              including Logistic Regression, Neural Networks, SVM, and KNN with
+              stratified cross-validation to handle class imbalance.
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>Machine Learning</span><span>Healthcare</span
+                ><span>EDA</span><span>Model Evaluation</span>
+              </div>
+              <div class="project-link">Paper / notebook (on request)</div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="analytics">
+            <div class="project-title-row">
+              <h3 class="project-title">Flight Delay Analysis (EDA)</h3>
+              <div class="project-chip">Python · Pandas</div>
+            </div>
+            <div class="project-meta">
+              Exploratory analysis of delay patterns, cancellations &amp; seasonality
+            </div>
+            <p class="project-desc">
+              Cleaned and transformed flight datasets using Pandas, handled missing
+              values and outliers, and explored delay drivers such as carrier,
+              route, and season. Produced visuals with Matplotlib/Seaborn to
+              highlight actionable patterns for operations teams.
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span>Python</span><span>Pandas</span><span>EDA</span
+                ><span>Matplotlib</span>
+              </div>
+              <div class="project-link">Notebook (coming soon)</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="reveal">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Skills</div>
+            <h2 class="section-title">Tooling &amp; focus areas</h2>
+          </div>
+          <p class="section-subtitle">
+            A blend of analytics, data engineering, and cloud skills aligned with
+            modern data teams.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skills-card">
+            <div class="skills-label">Analytics &amp; Languages</div>
+            <div class="pill-list">
+              <span>SQL</span><span>Python</span><span>R</span
+              ><span>Power BI</span><span>Excel</span><span>EDA</span
+              ><span>Data Visualization</span><span>Statistics</span>
+            </div>
+            <div class="skill-meter">
+              <div class="skill-meter-row">
+                <span>SQL &amp; Power BI</span> <span>Advanced</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="skills-card">
+            <div class="skills-label">Data Engineering &amp; Cloud</div>
+            <div class="pill-list">
+              <span>ETL / ELT</span><span>Azure Data Factory</span
+              ><span>Azure SQL Database</span><span>Data Warehousing</span
+              ><span>Data Modeling (Star/Snowflake)</span><span>Snowflake</span
+              ><span>Apache Spark</span><span>Git</span><span>Jira</span
+              ><span>Confluence</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="reveal">
+        <div class="section-header">
+          <div>
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">Let’s connect</h2>
+          </div>
+          <p class="section-subtitle">
+            I’m open to Data Analyst, Data Engineer, and Analytics Engineer roles
+            starting in 2025.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <a href="mailto:gvannam@mtu.edu">gvannam@mtu.edu</a>
+            </div>
+            <div class="contact-item">
+              <strong>Location:</strong> Houghton, MI · open to US roles
+            </div>
+            <div class="contact-item">
+              <strong>LinkedIn:</strong>
+              <a
+                href="https://www.linkedin.com/in/ganesh-vannam-8681642a8/"
+                target="_blank"
+                >linkedin.com/in/ganesh-vannam-8681642a8/</a
+              >
+            </div>
+            <div class="contact-item">
+              <strong>GitHub:</strong>
+              <a href="https://github.com/ganeshvannam" target="_blank"
+                >github.com/ganeshvannam</a
+              >
+            </div>
+            <p class="contact-note">
+              If you’d like, I can share code samples, notebooks, or deeper
+              breakdowns of any project on this page.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="skills-label" style="margin-bottom:0.3rem;">
+              Quick note
+            </div>
+            <p class="contact-mini">
+              I enjoy roles where I can own both the <strong>data pipeline</strong>
+              and the <strong>final analysis</strong>: designing datasets,
+              validating data quality, and then telling the story through
+              dashboards and metrics.
+            </p>
+            <p class="contact-mini" style="margin-top:0.45rem;">
+              Best way to reach me is email or LinkedIn. I’m happy to walk
+              through my portfolio in more detail or tackle a take-home exercise
+              that matches your stack.
+            </p>
+          </div>
+        </div>
+
+        <footer>© <span id="year"></span> Ganesh Vannam</footer>
+      </section>
+    </main>
+  </div>
 
   <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById("navToggle");
-    const navInner = document.getElementById("navInner");
+    // Theme toggle (dark/light with localStorage)
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = window.localStorage.getItem("gv-theme");
 
-    navToggle.addEventListener("click", () => {
-      navInner.classList.toggle("nav-open");
+    if (savedTheme === "light") {
+      root.setAttribute("data-theme", "light");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const isLight = root.getAttribute("data-theme") === "light";
+      const next = isLight ? "dark" : "light";
+      if (next === "light") {
+        root.setAttribute("data-theme", "light");
+      } else {
+        root.removeAttribute("data-theme");
+      }
+      window.localStorage.setItem("gv-theme", next);
     });
 
-    // Simple project filter
-    const filterButtons = document.querySelectorAll(".filter-chip");
-    const projectCards = document.querySelectorAll(".project-card");
+    // Nav chips scroll
+    const chips = document.querySelectorAll(".nav-chip");
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const targetId = chip.getAttribute("data-target");
+        const section = document.getElementById(targetId);
+        if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
-    filterButtons.forEach((btn) => {
+    // Scroll spy for nav chips
+    const sections = document.querySelectorAll("main section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            chips.forEach((chip) =>
+              chip.classList.toggle(
+                "active",
+                chip.getAttribute("data-target") === id
+              )
+            );
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { rootMargin: "-55% 0px -40% 0px", threshold: 0.1 }
+    );
+    sections.forEach((sec) => {
+      sec.classList.add("reveal");
+      observer.observe(sec);
+    });
+
+    // Project filters
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+    filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const filter = btn.getAttribute("data-filter");
-
-        filterButtons.forEach((b) => b.classList.remove("active"));
+        filterBtns.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-
         projectCards.forEach((card) => {
           const tags = card.getAttribute("data-tags") || "";
           if (filter === "all" || tags.includes(filter)) {
@@ -1020,6 +1382,9 @@
         });
       });
     });
+
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
